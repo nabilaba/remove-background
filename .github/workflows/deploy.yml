@@ -78,9 +78,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backend-production-files
-          path: ./backend
           include-hidden-files: true
           path: |
+            backend/
             !backend/venv/**
             !backend/__pycache__/**
             !backend/**/*.pyc
