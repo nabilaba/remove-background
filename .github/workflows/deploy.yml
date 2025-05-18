@@ -80,10 +80,10 @@ jobs:
           name: backend-production-files
           path: ./backend
           include-hidden-files: true
-        exclude:
-          - backend/venv/**
-          - backend/__pycache__/**
-          - backend/**/*.pyc
+          exclude:
+            - backend/venv/**
+            - backend/__pycache__/**
+            - backend/**/*.pyc
 
   deploy:
     name: Deploy Frontend and Backend
