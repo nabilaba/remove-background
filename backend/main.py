@@ -28,6 +28,7 @@ app.add_middleware(
 )
 
 # Serve /assets/... and other static files
+os.makedirs("dist/assets", exist_ok=True)
 app.mount("/assets", StaticFiles(directory="dist/assets"), name="assets")
 
 # Serve index.html at /
