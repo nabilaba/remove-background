@@ -50,7 +50,7 @@ jobs:
           path: ./frontend/dist
           include-hidden-files: true
 
-  build-backend:
+    build-backend:
     name: Prepare Python Backend
     runs-on: ubuntu-latest
 
@@ -58,12 +58,32 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Create virtual environment
+        run: python -m venv venv
+        working-directory: backend
+
+      - name: Install dependencies
+        run: |
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+        working-directory: backend
+
       - name: Upload Backend Files
         uses: actions/upload-artifact@v4
         with:
           name: backend-production-files
           path: ./backend
           include-hidden-files: true
+        exclude:
+          - backend/venv/**
+          - backend/__pycache__/**
+          - backend/**/*.pyc
 
   deploy:
     name: Deploy Frontend and Backend

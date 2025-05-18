@@ -15,7 +15,8 @@ app = FastAPI()
 # CORS middleware to allow requests from frontend
 origins = [
     "http://localhost:8000",  # Backend
-    "http://localhost:5173"   # Frontend (e.g., React Vite)
+    "http://localhost:5173",   # Frontend (e.g., React Vite)
+    "https://rembg.nabil.my.id",  # Production URL
 ]
 
 app.add_middleware(
