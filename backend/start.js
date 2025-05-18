@@ -46,7 +46,22 @@ if (installNeeded) {
 
 // Step 3: Run your app
 console.log("Starting app...");
-const app = spawn(venvPython, [mainScript], { stdio: "inherit" });
+const app = spawn(
+  venvPython,
+  [
+    "-m",
+    "uvicorn",
+    "main:app",
+    "--host",
+    "0.0.0.0",
+    "--port",
+    "8000",
+    // "--reload", // enable if you want uvicorn to watch instead
+  ],
+  {
+    stdio: "inherit",
+  }
+);
 
 app.on("close", (code) => {
   console.log(`App exited with code ${code}`);

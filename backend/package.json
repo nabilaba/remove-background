@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "node start.js"
+    "start": "nodemon --ext js,py start.js"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "nodemon": "^3.1.10"
   }
 }

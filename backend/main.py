@@ -16,7 +16,7 @@ app = FastAPI()
 origins = [
     "http://localhost:8000",  # Backend
     "http://localhost:5173",   # Frontend (e.g., React Vite)
-    "https://rembg.nabil.my.id",  # Production URL
+    "https://rembg.nabilaba.my.id",  # Production URL
 ]
 
 app.add_middleware(
@@ -172,7 +172,8 @@ async def download_file(filename: str):
 async def catch_all(full_path: str):
     index_path = os.path.join("dist", "index.html")
     return FileResponse(index_path)
-    
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
