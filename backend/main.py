@@ -35,12 +35,6 @@ app.mount("/assets", StaticFiles(directory="dist/assets"), name="assets")
 @app.get("/")
 async def serve_index():
     return FileResponse(os.path.join("dist", "index.html"))
-
-# (Optional) Catch-all route for SPA (e.g., React Router, Vue Router)
-@app.get("/{full_path:path}")
-async def catch_all(full_path: str):
-    index_path = os.path.join("dist", "index.html")
-    return FileResponse(index_path)
     
 # Create temporary download folder
 DOWNLOAD_DIR = "static/download"
@@ -173,7 +167,12 @@ async def download_file(filename: str):
                                  "Content-Disposition": f"attachment; filename={filename}"
                              })
 
-
+# (Optional) Catch-all route for SPA (e.g., React Router, Vue Router)
+@app.get("/{full_path:path}")
+async def catch_all(full_path: str):
+    index_path = os.path.join("dist", "index.html")
+    return FileResponse(index_path)
+    
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
