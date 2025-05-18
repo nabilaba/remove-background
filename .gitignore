@@ -27,3 +27,5 @@ dist-ssr
 # Python    
 venv/
 __pycache__/
+.reqhash
+static/
