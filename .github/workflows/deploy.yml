@@ -50,7 +50,7 @@ jobs:
           path: ./frontend/dist
           include-hidden-files: true
 
-    build-backend:
+  build-backend:
     name: Prepare Python Backend
     runs-on: ubuntu-latest
 
