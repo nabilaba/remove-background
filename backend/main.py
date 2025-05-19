@@ -121,8 +121,7 @@ async def remove_bg(file: UploadFile = File(...), model_name: str = Form("u2net"
 
     ico_filename = f"{uuid.uuid4().hex}.ico"
     ico_path = os.path.join(DOWNLOAD_DIR, ico_filename)
-    cropped_rgb = cropped_image.convert("RGB")
-    cropped_rgb.save(ico_path, format='ICO', sizes=[(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
+    cropped_image.save(ico_path, format='ICO', sizes=[(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
     file_paths.append(ico_path)
 
     # Create ZIP
